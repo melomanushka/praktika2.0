@@ -1,0 +1,84 @@
+﻿<Window x:Class="писец_какой_то.ViewModel.AddUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:писец_какой_то.ViewModel"
+        mc:Ignorable="d"
+        Height="250" Width="450"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen">
+    <Border Style="{DynamicResource delladd}">
+        <StackPanel Margin="8">
+            <Grid Height="180">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+
+                </Grid.RowDefinitions>
+                
+                <TextBlock Text="First Name" Style="{DynamicResource everytxbl}"
+                           FontSize="15" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Text="{Binding FirstName}" Margin="5" Background="Transparent"
+                          Foreground="#f8f4eb">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Grid.Row="1" Text="Last Name" Style="{DynamicResource everytxbl}"
+                           FontSize="15" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding LastName}" Margin="5" Background="Transparent"
+                          Foreground="#f8f4eb">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Grid.Row="2" Text="Login" Style="{DynamicResource everytxbl}"
+                           FontSize="15" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding Login}" Margin="5" Background="Transparent"
+                          Foreground="#f8f4eb">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Grid.Row="3" Text="Password" Style="{DynamicResource everytxbl}"
+                           FontSize="15" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="3" Text="{Binding Password}" Margin="5" Background="Transparent"
+                          Foreground="#f8f4eb">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+            </Grid>
+            <TextBlock Text="{Binding ErrorMessage}" Margin="5,0" FontSize="13" Foreground="DarkRed" HorizontalAlignment="Left" Width="425"/>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button Style="{DynamicResource everybutton}" Content="Cancel" Margin="15" 
+                        FontSize="15" Click="btn_close_Click"/>
+                <Button Style="{DynamicResource everybutton}" Content="Add" Margin="15" 
+                        FontSize="15" Command="{Binding AddUserCommand}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>

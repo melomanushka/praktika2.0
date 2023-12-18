@@ -1,0 +1,68 @@
+﻿<Page x:Class="писец_какой_то.View.Userlist"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:писец_какой_то.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="625" d:DesignWidth="900"
+      Title="Userlist">
+    <Page.Resources>
+        <Style TargetType="DataGrid" x:Key="dataGrid">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="RowBackground" Value="Transparent" />
+            <Setter Property="Foreground" Value="AliceBlue" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="GridLinesVisibility" Value="None" />
+        </Style>
+        <Style TargetType="DataGridColumnHeader" >
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DataGridColumnHeader">
+                        <Border Background="MediumSlateBlue">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Foreground" Value="AliceBlue" />
+            <Setter Property="FontSize" Value="16" />
+        </Style>
+    </Page.Resources>
+    
+    <DockPanel>
+        <Grid DockPanel.Dock="Top">
+            <StackPanel Height="35" Visibility="{Binding levelVisibility}" DockPanel.Dock="Top" 
+                        Orientation="Horizontal" HorizontalAlignment="Left" Margin="0 0 10 0">
+
+                <!--Удалить-->
+                <Button Command="{Binding DeleteUserFormCommand}"  Width="35" Margin="0 0 0 0">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/delete.png"/>
+                    </Button.Background>
+                </Button>
+                
+                <!--Добавить-->
+                <Button Command="{Binding AddUserFormCommand}" Margin="0 0 0 0" Width="35">
+                    <Button.Background>
+                        <ImageBrush ImageSource="/Resources/add.png"/>
+                    </Button.Background>
+                </Button>
+            </StackPanel>
+        </Grid>
+        <ScrollViewer>
+            <DataGrid SelectedItem="{Binding SelectedUser, Mode=TwoWay}" ItemsSource="{Binding Users}" RowStyle="{DynamicResource  DataGridRowStyle}" 
+                                              RowHeaderStyle="{StaticResource DataGridRowHeaderStyle}" ColumnHeaderStyle="{StaticResource DataGridColumnHeaderStyle}"
+                                              Style="{StaticResource DataGridStyle}" CellStyle="{StaticResource  DataGridCellStyle}" Cursor="Hand" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn SelectiveScrollingGrid.SelectiveScrollingOrientation="Horizontal" Width="57" Header="#" Binding="{Binding Id}"/>
+                    <DataGridTextColumn Width="*" Header="FirstName" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Width="*" Header="LastName" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Width="*" Header="Login" Binding="{Binding Login}"/>
+                    <DataGridTextColumn Width="*" Header="AccessLevel" Binding="{Binding AccessLevel}"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </ScrollViewer>
+    </DockPanel>
+</Page>

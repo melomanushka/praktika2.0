@@ -1,0 +1,70 @@
+﻿<Window x:Class="писец_какой_то.View.DeleteUser"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:писец_какой_то.View"
+        mc:Ignorable="d"
+        Height="250" Width="450"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Background="Transparent"
+        AllowsTransparency="True"
+        MouseDown="Window_MouseDown"
+        WindowStartupLocation="CenterScreen">
+
+    <Border Style="{DynamicResource delladd}">
+        <StackPanel Margin="8">
+            <Grid Height="180">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Text="Login" Style="{DynamicResource everytxbl}"
+                           FontSize="19" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="0" Text="{Binding Login}" Margin="10" Background="Transparent"
+                          Foreground="#f8f4eb">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Text="First Name" Grid.Row="1" Style="{DynamicResource everytxbl}"
+                           FontSize="19" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="1" Text="{Binding FirstName}" Margin="10" Background="Transparent"
+                          Foreground="#f8f4eb">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+                <TextBlock Grid.Row="2" Text="Last Name" Style="{DynamicResource everytxbl}"
+                           FontSize="19" VerticalAlignment="Center"/>
+                <TextBox Grid.Column="1" Grid.Row="2" Text="{Binding LastName}" Margin="10" Background="Transparent"
+                          Foreground="#f8f4eb">
+                    <TextBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </TextBox.Resources>
+                </TextBox>
+
+            </Grid>
+            <TextBlock Text="{Binding ErrorMessage}" Margin="20,0" FontSize="13" Foreground="DarkRed" HorizontalAlignment="Left" Width="350"/>
+            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Height="40">
+                <Button FontSize="15" Style="{DynamicResource everybutton}" Content="Cancel" Margin="20,0" Click="btn_close_Click"/>
+                <Button FontSize="15" Style="{DynamicResource everybutton}" Content="Delete" Margin="20,0" Command="{Binding DeleteUserCommand}"/>
+            </StackPanel>
+        </StackPanel>
+    </Border>
+</Window>
